@@ -6,8 +6,8 @@ function solveEquation(a, b, c) {
     let result = (-b / 2 * a);
     arr.push(result);
   } else if (discriminantsCount > 0) {
-    let firstResult = (-b + Math.sqrt(d)) / 2 * a;
-    let secondResult = (-b - Math.sqrt(d)) / 2 * a;
+    let firstResult = (-b + Math.sqrt(discriminantsCount)) / 2 * a;
+    let secondResult = (-b - Math.sqrt(discriminantsCount)) / 2 * a;
     arr.push(firstResult, secondResult);
   }
   return arr;
