@@ -17,8 +17,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let adaptivePercent = percent / 100;
   let s = amount - contribution;
   let p = (1 / 12) * adaptivePercent;
-  let n = countMonths;
-  let countMpunthPay = s * (p + (p / (((1 + p) **n) - 1)));
+  let countMpunthPay = s * (p + (p / (((1 + p) **countMonths) - 1)));
   let resultTotalMortgage = countMpunthPay * countMonths;
   return Number(resultTotalMortgage.toFixed(2));
 }
