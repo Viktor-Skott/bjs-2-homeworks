@@ -15,9 +15,9 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let adaptivePercent = percent / 100;
-  let s = amount - contribution;
-  let p = (1 / 12) * adaptivePercent;
-  let countMpunthPay = s * (p + (p / (((1 + p) **countMonths) - 1)));
+  let bodyAmount = amount - contribution;
+  let resultOfPersent = (1 / 12) * adaptivePercent;
+  let countMpunthPay = bodyAmount * (resultOfPersent + (resultOfPersent / (((1 + resultOfPersent) **countMonths) - 1)));
   let resultTotalMortgage = countMpunthPay * countMonths;
   return Number(resultTotalMortgage.toFixed(2));
 }
