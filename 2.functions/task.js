@@ -1,6 +1,6 @@
 function getArrayParams(...arr) {
-  let min = Math.min(arr);
-  let max = Math.max(arr);
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
   let sum = arr.reduce(function (currentSum, current) {
     return (currentSum = current + currentSum);
   }, 0);
