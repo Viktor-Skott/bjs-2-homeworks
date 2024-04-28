@@ -10,7 +10,7 @@ let studentSecond = new Student("Надежда", "женский", 26);
 
 
 Student.prototype.setSubject = function (subjectName) {
-    this.subjectName = subjectName;
+    this.subject = subjectName;
 }
 
 Student.prototype.addMarks = function (...marks) {
