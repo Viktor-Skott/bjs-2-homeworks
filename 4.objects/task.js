@@ -2,7 +2,7 @@ function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
-  this.marks = [];
+  this.marks = [''];
 }
 
 let studentFirst = new Student("Виктор", "мужской", 25);
