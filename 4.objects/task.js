@@ -16,17 +16,19 @@ Student.prototype.setSubject = function (subjectName) {
 Student.prototype.addMarks = function (...marks) {
   if (this.marks) {
     this.marks.push(...marks);
-  } else {
+  } else if (this.marks == 0) {
     this.marks = [...marks];
+  } else {
+    return 0;
   }
 }
 
 Student.prototype.getAverage = function () {
-    if (this.marks.length > 0) {
-      return this.marks.reduce((acc, item) => acc + item, 0) / this.marks.length;
-    } else {
-      return 0;
-    }
+  if (this.marks === undefined || this.marks.length == 0) {
+    return 0;
+  } else {
+    return this.marks.reduce((acc, item) => acc + item, 0) / this.marks.length;
+  }
 }
 
 Student.prototype.exclude = function (reason) {
