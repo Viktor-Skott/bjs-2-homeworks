@@ -43,6 +43,13 @@ class Book extends PrintEditionItem {
     }
 }
 
+class SomeBook extends PrintEditionItem {
+    constructor (author, name, releaseDate, pagesCount, state = 100, type = 'book'){
+        super(name, releaseDate, pagesCount, state, type);
+        this.author - author;
+    }
+}
+
 class NovelBook extends Book {
     constructor (author, name, releaseDate, pagesCount, state = 100, type = 'novel') {
         super(author, name, releaseDate, pagesCount, state, type);
@@ -72,13 +79,13 @@ class Library {
   }
 
   findBookBy(type, value) {
-      let result = this.books.find((book) => book[type] === value);
-      if (result === undefined) {
-          return null;
-      } else {
-          return result;
-      }
-  }
+    let result = this.books.find((book) => book[type] === value);
+    if (result === undefined) {
+        return null;
+    } else {
+        return result;
+    }
+    }
 
   giveBookByName(bookName) {
       let result = this.books.find((book) => book.name === bookName);
