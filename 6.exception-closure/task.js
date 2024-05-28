@@ -35,8 +35,7 @@ class Triangle {
 
     get getPerimeter() {
         try {
-            let perimeter = this.firstSide + this.secondSide + this.thirdSide;
-            return perimeter;
+            return this.firstSide + this.secondSide + this.thirdSide;
         } catch {
             throw new Error("Ошибка! Треугольник не существует");
         }
