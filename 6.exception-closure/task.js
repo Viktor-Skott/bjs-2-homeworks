@@ -1,10 +1,10 @@
 ﻿//1
 function parseCount(count) {
-    let resultOfParse = Number.parseFloat(count);
     let error = new Error("Невалидное значение");
-    if (isNaN(resultOfParse)) {
+    if (isNaN(count)) {
         return error;
     } else {
+        let resultOfParse = Number.parseFloat(count);
         return resultOfParse;
     }
 }
@@ -35,7 +35,6 @@ class Triangle {
 
     get getPerimeter() {
         try {
-            this.validaTriangle;
             let perimeter = this.firstSide + this.secondSide + this.thirdSide;
             return perimeter;
         } catch {
