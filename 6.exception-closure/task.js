@@ -1,21 +1,14 @@
 ﻿//1
 function parseCount(count) {
-    let error = new Error("Невалидное значение");
     if (isNaN(count)) {
-        return error;
-    } else {
-        let resultOfParse = Number.parseFloat(count);
-        return resultOfParse;
+        return new Error("Невалидное значение");
     }
+    return Number.parseFloat(count);
 }
 
 // 2
 function validateCount(count) {
-    try {
         return parseCount(count);
-    } catch {
-        throw error;
-    }
 }
 
 //3 
@@ -33,16 +26,11 @@ class Triangle {
         }
     }
 
-    get getPerimeter() {
-        try {
+    get perimeter() {
             return this.firstSide + this.secondSide + this.thirdSide;
-        } catch {
-            throw new Error("Ошибка! Треугольник не существует");
-        }
     }
 
-    get getArea() {
-        try {
+    get area() {
             let hafPerimeter = 0.5 * this.getPerimeter;
             let areaFromTringle = Math.sqrt(
                 hafPerimeter *
@@ -50,13 +38,18 @@ class Triangle {
                         (hafPerimeter - this.secondSide) *
                         (hafPerimeter - this.thirdSide)),
             );
-            return areaFromTringle.toFixed(3);
-        } catch {
-            throw new Error("Ошибка! Треугольник не существует");
-        }
+            return Number(areaFromTringle.toFixed(3));
     }
 }
 
 function getTringle(firstSide, secondSide, thirdSide) {
-    new Triangle(firstSide, secondSide, thirdSide);
+    let triangle = new Triangle(firstSide, secondSide, thirdSide)
+    triangle = {
+        get perimeter() {
+            return 'Ошибка! Треугольник не существует';
+        },
+        get area() {
+            return 'Ошибка! Треугольник не существует';
+        }
+    }
 }
