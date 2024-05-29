@@ -45,7 +45,7 @@ class Triangle {
 function getTringle(firstSide, secondSide, thirdSide) {
     try {
         return new Triangle(firstSide, secondSide, thirdSide)
-    } catch {
+    } catch (error) {
         return {
             get perimeter() {return 'Ошибка! Треугольник не существует';},
             get area() {return 'Ошибка! Треугольник не существует';}
