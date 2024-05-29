@@ -43,13 +43,12 @@ class Triangle {
 }
 
 function getTringle(firstSide, secondSide, thirdSide) {
-    let triangle = new Triangle(firstSide, secondSide, thirdSide)
-    triangle = {
-        get perimeter() {
-            return 'Ошибка! Треугольник не существует';
-        },
-        get area() {
-            return 'Ошибка! Треугольник не существует';
+    try {
+        return new Triangle(firstSide, secondSide, thirdSide)
+    } catch {
+        return {
+            get perimeter() {return 'Ошибка! Треугольник не существует';},
+            get area() {return 'Ошибка! Треугольник не существует';}
         }
-    }
+    }  
 }
