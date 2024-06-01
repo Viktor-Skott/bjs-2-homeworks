@@ -1,6 +1,6 @@
 ﻿//1
 function parseCount(count) {
-    if (isNaN(count) || count.length === 0) {
+    if (isNaN(count)) {
         throw new Error("Невалидное значение");
     }
     return Number.parseFloat(count);
@@ -11,7 +11,7 @@ function validateCount(count) {
     try {
         return parseCount(count);
     } catch (error) {
-        throw new Error("Невалидное значение");
+        return error;
     }
 }
 
@@ -46,7 +46,7 @@ class Triangle {
     }
 }
 
-function getTringle(firstSide, secondSide, thirdSide) {
+function getTriangle(firstSide, secondSide, thirdSide) {
     try {
         return new Triangle(firstSide, secondSide, thirdSide)
     } catch (error) {
