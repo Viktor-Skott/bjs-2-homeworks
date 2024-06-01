@@ -11,7 +11,7 @@ function validateCount(count) {
     try {
         return parseCount(count);
     } catch (error) {
-        console.log(error)
+        throw new Error("Невалидное значение");
     }
 }
 
