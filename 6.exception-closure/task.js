@@ -1,14 +1,18 @@
 ﻿//1
 function parseCount(count) {
-    if (isNaN(count)) {
-        return new Error("Невалидное значение");
+    if (isNaN(count) || count.length === 0) {
+        throw new Error("Невалидное значение");
     }
     return Number.parseFloat(count);
 }
 
 // 2
 function validateCount(count) {
+    try {
         return parseCount(count);
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 //3 
@@ -31,7 +35,7 @@ class Triangle {
     }
 
     get area() {
-            let hafPerimeter = 0.5 * this.getPerimeter;
+            let hafPerimeter = 0.5 * this.perimeter;
             let areaFromTringle = Math.sqrt(
                 hafPerimeter *
                     ((hafPerimeter - this.firstSide) *
