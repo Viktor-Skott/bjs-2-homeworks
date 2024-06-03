@@ -1,7 +1,7 @@
 class AlarmClock {
     constructor(alarmCollection = [], intervalId) {
         this.alarmCollection = alarmCollection;
-        this.intervalId = intervalId;
+        this.intervalId;
     }
 
     addClock(time, callback, canCall = true) {
@@ -23,7 +23,7 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {
-        let now = new Date().toLocaleTimeString().slice(0,-6);
+        let now = new Date().toLocaleTimeString().slice(0,-3);
         return now;
     }
 
