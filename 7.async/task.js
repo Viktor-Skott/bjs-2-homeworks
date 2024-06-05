@@ -1,11 +1,11 @@
 class AlarmClock {
-    constructor(alarmCollection = [], intervalId = null) {
-        this.alarmCollection = alarmCollection;
-        this.intervalId = intervalId;
+    constructor() {
+        this.alarmCollection = [];
+        this.intervalId = null;
     }
 
-    addClock(time, callback, canCall = true) {
-        if (time === undefined || callback === undefined) {
+    addClock(time, callback) {
+        if (!time || !callback) {
             throw new Error('Отсутствуют обязательные аргументы');
         } 
         if (this.alarmCollection.some((item) => item.time === time)) {
@@ -14,41 +14,37 @@ class AlarmClock {
         this.alarmCollection.push({
             callback,
             time,
-            canCall,
+            canCall: true,
         });
     }
 
     removeClock(time) {
-        return this.alarmCollection = this.alarmCollection.filter(
-            (item) => item.time !== time,
+        this.alarmCollection = this.alarmCollection.filter(
+            (item) => item.time !== time
         )
     }
 
     getCurrentFormattedTime() {
-        let now = new Date().toLocaleTimeString().slice(0,-3);
-        return now;
+        return new Date().toLocaleTimeString().slice(0,-3);
     }
 
     start() {
         if (this.intervalId) {
             return;
-        }
-        if (!this.intervalId) {
-            return this.intervalId = setInterval(() => {
-                this.alarmCollection.forEach((item) => {
-                    if (item.time === this.getCurrentFormattedTime() && this.canCall) {
-                        this.canCall = false;
-                        this.callback();
-                    }
-                })
-            }, 1000);
-        }
+        };
+        this.intervalId = setInterval(() => {
+            this.alarmCollection.forEach((item) => {
+                if (item.time === this.getCurrentFormattedTime() && this.canCall) {
+                    item.canCall = false;
+                    item.callback();
+                }
+            })
+        }, 1000);
     }
 
     stop() {
-        function clearInterval() {
-            this.intervalId = null;
-        }
+        clearInterval(intervalId);
+        this.intervalId = null;
     }
 
     resetAllCalls() {
