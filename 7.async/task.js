@@ -43,8 +43,7 @@ class AlarmClock {
     }
 
     stop() {
-        clearInterval(intervalId);
-        this.intervalId = null;
+        clearInterval(this.intervalId);
     }
 
     resetAllCalls() {
