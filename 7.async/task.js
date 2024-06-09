@@ -2,6 +2,7 @@ class AlarmClock {
     constructor() {
         this.alarmCollection = [];
         this.intervalId = null;
+        this.canCall = true;
     }
 
     addClock(time, callback) {
@@ -14,7 +15,6 @@ class AlarmClock {
         this.alarmCollection.push({
             callback,
             time,
-            canCall: true,
         });
     }
 
@@ -44,6 +44,7 @@ class AlarmClock {
 
     stop() {
         clearInterval(this.intervalId);
+        this.intervalId = null;
     }
 
     resetAllCalls() {
