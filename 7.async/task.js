@@ -2,10 +2,9 @@ class AlarmClock {
     constructor() {
         this.alarmCollection = [];
         this.intervalId = null;
-        this.canCall = true;
     }
 
-    addClock(time, callback) {
+    addClock(time, callback, canCall = true) {
         if (!time || !callback) {
             throw new Error('Отсутствуют обязательные аргументы');
         } 
@@ -15,6 +14,7 @@ class AlarmClock {
         this.alarmCollection.push({
             callback,
             time,
+            canCall,
         });
     }
 
@@ -25,7 +25,7 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {
-        return new Date().toLocaleTimeString().slice(0,-3);
+        return new Date().toLocaleTimeString().slice(0,-6);
     }
 
     start() {
@@ -34,7 +34,7 @@ class AlarmClock {
         };
         this.intervalId = setInterval(() => {
             this.alarmCollection.forEach((item) => {
-                if (item.time === this.getCurrentFormattedTime() && this.canCall) {
+                if (item.time == this.getCurrentFormattedTime() && item.canCall) {
                     item.canCall = false;
                     item.callback();
                 }
